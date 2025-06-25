@@ -1,6 +1,7 @@
 @tool
 extends EditorPlugin
 
+
 var dock: Control
 
 func _enter_tree() -> void:
@@ -8,6 +9,7 @@ func _enter_tree() -> void:
 	dock = preload("uid://cht1oujjfh0om").instantiate()
 	dock.editor_interface = edi
 	add_control_to_dock(DOCK_SLOT_LEFT_BR, dock)
+	EzSettings.setup()
 
 func _exit_tree() -> void:
 	remove_control_from_docks(dock)

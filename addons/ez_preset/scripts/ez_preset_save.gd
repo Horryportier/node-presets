@@ -5,3 +5,5 @@ extends Resource
 @export_multiline var description: String
 @export var node_type: String
 @export var params: Dictionary[String, Variant]
+
+@export var children: Array[EzPresetSave]

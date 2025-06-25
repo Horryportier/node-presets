@@ -20,6 +20,7 @@ const SAVE_FAILED: = StatusMsg.SaveFailed
 
 @onready var status_label: RichTextLabel = %Status
 @onready var save_button: Button = %Save
+@onready var include_children: CheckButton = %IncludeChildren
 @onready var preset_name: LineEdit = %PresetName
 @onready var description: TextEdit = %Description
 @onready var presets_list: ItemList = %PresetList
@@ -28,7 +29,7 @@ const SAVE_FAILED: = StatusMsg.SaveFailed
 @onready var node_type_label: RichTextLabel = %NodeTypeLabel
 
 
-@onready var presets_data: EzPresetsData = preload("uid://gj412pktplub")
+@onready var presets_data: EzPresetsData = load_preset_data()
 
 var editor_interface: EditorInterface
 
@@ -48,6 +49,17 @@ func _ready() -> void:
 	save_button.pressed.connect(_on_save_button_pressed)
 	apply_preset_button.pressed.connect(_on_apply_button_pressed)
 	_update_excluded_params_list()
+
+func load_preset_data() -> EzPresetsData:
+	var path: String = EzSettings.get_setting(EzSettings.PRESET_DATA_PATH)
+	print(path)
+	if !ResourceLoader.exists(path, "EzPresetsData"):
+		var new_data: EzPresetsData = EzPresetsData.new()
+		var excluded_parmas: Array = EzSettings.get_setting(EzSettings.EXCLUDED_PROPERTIES)
+		for param in excluded_parmas:
+			new_data.excluded_params[param] =  true
+		ResourceSaver.save(new_data, path)
+	return ResourceLoader.load(path)
 
 func _on_save_button_pressed() -> void:
 	if _status_msg == SELECTED and is_instance_valid(selected) and preset_name.text != "":
@@ -69,6 +81,9 @@ func _add_save_to_data(save: EzPresetSave) -> void:
 func _save_presets_data() -> void:
 	if ResourceSaver.save(presets_data) != OK:
 		push_warning("failed to save presets data")
+		_status_msg = SAVE_FAILED
+	else: 
+		_status_msg = SAVE_SUCCESUFULL
 
 
 func _update_excluded_params_list() -> void:
@@ -82,9 +97,13 @@ func crate_preset_resource(node: Node, _name: String,  description: String) -> E
 	save.name = _name
 	save.description = description
 	for p: Dictionary in node.get_property_list():
-		if presets_data.excluded_params.get(p.get("name"), false):
+		var p_name:  = p.get("name")
+		if presets_data.excluded_params.get(p_name, false):
 			continue
-		save.params[p["name"]]  = node.get(p.get("name"))
+		save.params[p["name"]]  = node.get(p_name)
+	if include_children.button_pressed:
+		for child in node.get_children():
+			save.children.append(crate_preset_resource(child, _name + ":" + child.name, ""))
 	return save
 
 func _get_node_type_name(node: Node) -> String:

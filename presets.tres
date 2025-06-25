@@ -1,0 +1,186 @@
+[gd_resource type="Resource" script_class="EzPresetsData" load_steps=11 format=3 uid="uid://b0wgpc2e3ydt8"]
+
+[ext_resource type="Script" uid="uid://cem52isc0c1vv" path="res://addons/ez_preset/scripts/ez_preset_group.gd" id="1_qg5l0"]
+[ext_resource type="Script" uid="uid://b8ev7faugivod" path="res://addons/ez_preset/scripts/ez_presets_data.gd" id="2_irq1n"]
+[ext_resource type="Script" uid="uid://ccp1uimo06m2w" path="res://addons/ez_preset/scripts/ez_preset_save.gd" id="2_rxn2t"]
+[ext_resource type="Script" uid="uid://bfnn81qxjoi8d" path="res://test/foo_type.gd" id="3_yttwl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u8oh8"]
+
+[sub_resource type="Resource" id="Resource_65vpo"]
+script = ExtResource("2_rxn2t")
+name = "foo1"
+description = "test "
+node_type = "Foo"
+params = Dictionary[String, Variant]({
+"Auto Translate": null,
+"Editor Description": null,
+"Physics Interpolation": null,
+"Process": null,
+"Thread Group": null,
+"auto_translate_mode": 0,
+"bar": "aoeua(",
+"baz": 423,
+"editor_description": "",
+"foo_type.gd": null,
+"metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"Foo",
+"physics_interpolation_mode": 0,
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"script": ExtResource("3_yttwl"),
+"unique_name_in_owner": false,
+"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
+})
+children = null
+
+[sub_resource type="Resource" id="Resource_rxn2t"]
+script = ExtResource("2_rxn2t")
+name = "foo_hierachy:Foo:Node2D"
+description = ""
+node_type = "Node2D"
+params = Dictionary[String, Variant]({
+"Auto Translate": null,
+"CanvasItem": null,
+"Editor Description": null,
+"Material": null,
+"Node2D": null,
+"Ordering": null,
+"Physics Interpolation": null,
+"Process": null,
+"Texture": null,
+"Thread Group": null,
+"Transform": null,
+"Visibility": null,
+"auto_translate_mode": 0,
+"clip_children": 0,
+"editor_description": "",
+"global_position": Vector2(0, 0.51),
+"global_rotation": 2.70701,
+"global_rotation_degrees": 155.1,
+"global_scale": Vector2(0.335, 0.335),
+"global_skew": 1.22522,
+"global_transform": Transform2D(-0.30386, 0.141047, 0.238118, -0.235637, 0, 0.51),
+"light_mask": 1,
+"material": null,
+"modulate": Color(1, 1, 1, 0.701961),
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"Node2D",
+"physics_interpolation_mode": 0,
+"position": Vector2(0, 0.51),
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"rotation": -3.57618,
+"rotation_degrees": -204.9,
+"scale": Vector2(0.335, 0.335),
+"script": null,
+"self_modulate": Color(1, 1, 1, 1),
+"show_behind_parent": false,
+"skew": 1.22522,
+"texture_filter": 0,
+"texture_repeat": 0,
+"top_level": false,
+"transform": Transform2D(-0.30386, 0.141047, 0.238118, -0.235637, 0, 0.51),
+"unique_name_in_owner": false,
+"use_parent_material": false,
+"visibility_layer": 1,
+"visible": true,
+"y_sort_enabled": false,
+"z_as_relative": true,
+"z_index": 0
+})
+children = Array[ExtResource("2_rxn2t")]([])
+
+[sub_resource type="Resource" id="Resource_yttwl"]
+script = ExtResource("2_rxn2t")
+name = "foo_hierachy:Foo"
+description = ""
+node_type = "Foo"
+params = Dictionary[String, Variant]({
+"Auto Translate": null,
+"Editor Description": null,
+"Physics Interpolation": null,
+"Process": null,
+"Thread Group": null,
+"auto_translate_mode": 0,
+"bar": "aoeua(",
+"baz": 423,
+"editor_description": "",
+"foo_type.gd": null,
+"metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"Foo",
+"physics_interpolation_mode": 0,
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"script": ExtResource("3_yttwl"),
+"unique_name_in_owner": false,
+"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
+})
+children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_rxn2t")])
+
+[sub_resource type="Resource" id="Resource_u8oh8"]
+script = ExtResource("2_rxn2t")
+name = "foo_hierachy"
+description = "test of saving children"
+node_type = "Foo"
+params = Dictionary[String, Variant]({
+"Auto Translate": null,
+"Editor Description": null,
+"Physics Interpolation": null,
+"Process": null,
+"Thread Group": null,
+"auto_translate_mode": 0,
+"bar": "aoeua(",
+"baz": 423,
+"editor_description": "",
+"foo_type.gd": null,
+"metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"Foo",
+"physics_interpolation_mode": 0,
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"script": ExtResource("3_yttwl"),
+"unique_name_in_owner": false,
+"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
+})
+children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_yttwl")])
+
+[sub_resource type="Resource" id="Resource_tu0o8"]
+script = ExtResource("1_qg5l0")
+type = "Foo"
+members = Array[ExtResource("2_rxn2t")]([SubResource("Resource_65vpo"), SubResource("Resource_u8oh8")])
+
+[resource]
+script = ExtResource("2_irq1n")
+presets = Dictionary[String, ExtResource("1_qg5l0")]({
+"Foo": SubResource("Resource_tu0o8")
+})
+excluded_params = Dictionary[String, bool]({
+"Node": true,
+"_import_path": true,
+"owner": true,
+"scene_file_path": true
+})
