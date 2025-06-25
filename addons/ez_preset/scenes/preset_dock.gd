@@ -23,6 +23,7 @@ const SAVE_FAILED: = StatusMsg.SaveFailed
 @onready var preset_name: LineEdit = %PresetName
 @onready var description: TextEdit = %Description
 @onready var presets_list: ItemList = %PresetList
+@onready var excluded_params_list: ItemList = %ExcludedParmsList
 @onready var apply_preset_button: Button = %ApplyPreset
 @onready var node_type_label: RichTextLabel = %NodeTypeLabel
 
@@ -46,6 +47,7 @@ func _ready() -> void:
 	editor_selection.selection_changed.connect(_on_selection_changed)
 	save_button.pressed.connect(_on_save_button_pressed)
 	apply_preset_button.pressed.connect(_on_apply_button_pressed)
+	_update_excluded_params_list()
 
 func _on_save_button_pressed() -> void:
 	if _status_msg == SELECTED and is_instance_valid(selected) and preset_name.text != "":
@@ -69,6 +71,10 @@ func _save_presets_data() -> void:
 		push_warning("failed to save presets data")
 
 
+func _update_excluded_params_list() -> void:
+	excluded_params_list.clear()
+	for param in presets_data.excluded_params.keys():
+		excluded_params_list.add_item(param, null, false)
 
 func crate_preset_resource(node: Node, _name: String,  description: String) -> EzPresetSave:
 	var save: = EzPresetSave.new()
@@ -76,6 +82,8 @@ func crate_preset_resource(node: Node, _name: String,  description: String) -> E
 	save.name = _name
 	save.description = description
 	for p: Dictionary in node.get_property_list():
+		if presets_data.excluded_params.get(p.get("name"), false):
+			continue
 		save.params[p["name"]]  = node.get(p.get("name"))
 	return save
 
@@ -107,6 +115,8 @@ func _on_apply_button_pressed() -> void:
 
 func _apply_properies(node: Node, save: EzPresetSave) -> void:
 	for property in save.params.keys():
+		if presets_data.excluded_params.get(property, false):
+			continue
 		node.set(property, save.params[property])
 
 

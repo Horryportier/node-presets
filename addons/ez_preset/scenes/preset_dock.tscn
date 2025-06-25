@@ -1,15 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cht1oujjfh0om"]
+[gd_scene load_steps=2 format=3 uid="uid://cht1oujjfh0om"]
 
 [ext_resource type="Script" uid="uid://bl6mpbcp2qdgn" path="res://addons/ez_preset/scenes/preset_dock.gd" id="1_mt5uv"]
-[ext_resource type="Script" uid="uid://bfnn81qxjoi8d" path="res://test/foo_type.gd" id="2_hcwu1"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hcwu1"]
-blend_mode = 4
-light_mode = 2
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hcwu1"]
-sky_curve = 0.878451
-energy_multiplier = 11.9
 
 [node name="EzPreset" type="Control"]
 layout_mode = 3
@@ -108,19 +99,22 @@ placeholder_text = "Description"
 [node name="Settings" type="MarginContainer" parent="TabContainer"]
 custom_minimum_size = Vector2(0, 0.575)
 layout_mode = 2
-theme_override_constants/margin_left = 580
 metadata/_tab_index = 2
 
-[node name="Bar" type="Node" parent="."]
-script = ExtResource("2_hcwu1")
-bar = "Test"
-baz = 69
-zaz = SubResource("CanvasItemMaterial_hcwu1")
-metadata/_custom_type_script = "uid://bfnn81qxjoi8d"
+[node name="VFlowContainer" type="VSplitContainer" parent="TabContainer/Settings"]
+layout_mode = 2
 
-[node name="Bar2" type="Node" parent="."]
-script = ExtResource("2_hcwu1")
-bar = "Test"
-baz = 420
-zaz = SubResource("ProceduralSkyMaterial_hcwu1")
-metadata/_custom_type_script = "uid://bfnn81qxjoi8d"
+[node name="ExcludedParmas" type="RichTextLabel" parent="TabContainer/Settings/VFlowContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=red]Excluded Parmas[/color]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ExcludedParmsList" type="ItemList" parent="TabContainer/Settings/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+select_mode = 2
+auto_width = true
+auto_height = true
+same_column_width = true
