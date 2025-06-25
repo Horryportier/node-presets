@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=3 uid="uid://cht1oujjfh0om"]
+
+[ext_resource type="Script" uid="uid://bl6mpbcp2qdgn" path="res://addons/ez_preset/scenes/preset_dock.gd" id="1_mt5uv"]
+[ext_resource type="Script" uid="uid://bfnn81qxjoi8d" path="res://test/foo_type.gd" id="2_hcwu1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hcwu1"]
+blend_mode = 4
+light_mode = 2
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hcwu1"]
+sky_curve = 0.878451
+energy_multiplier = 11.9
+
+[node name="EzPreset" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mt5uv")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+offset_top = 35.0
+offset_right = 155.0
+offset_bottom = 101.0
+current_tab = 2
+clip_tabs = false
+drag_to_rearrange_enabled = true
+
+[node name="Presets" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Presets"]
+layout_mode = 2
+
+[node name="NodeTypeLabel" type="RichTextLabel" parent="TabContainer/Presets/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Node Type"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/Presets/VSplitContainer"]
+layout_mode = 2
+
+[node name="ApplyPreset" type="Button" parent="TabContainer/Presets/VSplitContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Apply"
+
+[node name="PresetList" type="ItemList" parent="TabContainer/Presets/VSplitContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+allow_reselect = true
+auto_width = true
+auto_height = true
+text_overrun_behavior = 0
+max_columns = 5
+same_column_width = true
+
+[node name="NewPreset" type="VSplitContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/NewPreset"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/NewPreset/MarginContainer"]
+layout_mode = 2
+
+[node name="Status" type="RichTextLabel" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Status:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer/VSplitContainer/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save"
+
+[node name="PresetName" type="LineEdit" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer/VSplitContainer/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "preset name"
+expand_to_text_length = true
+
+[node name="Description" type="TextEdit" parent="TabContainer/NewPreset/MarginContainer/VSplitContainer/VSplitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+placeholder_text = "Description"
+
+[node name="Settings" type="MarginContainer" parent="TabContainer"]
+custom_minimum_size = Vector2(0, 0.575)
+layout_mode = 2
+theme_override_constants/margin_left = 580
+metadata/_tab_index = 2
+
+[node name="Bar" type="Node" parent="."]
+script = ExtResource("2_hcwu1")
+bar = "Test"
+baz = 69
+zaz = SubResource("CanvasItemMaterial_hcwu1")
+metadata/_custom_type_script = "uid://bfnn81qxjoi8d"
+
+[node name="Bar2" type="Node" parent="."]
+script = ExtResource("2_hcwu1")
+bar = "Test"
+baz = 420
+zaz = SubResource("ProceduralSkyMaterial_hcwu1")
+metadata/_custom_type_script = "uid://bfnn81qxjoi8d"
