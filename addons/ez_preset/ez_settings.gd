@@ -7,6 +7,8 @@ const ROOT_PATH: String = "ez_preset/"
 
 const PRESET_DATA_PATH: String = "editor/preset_path"
 const EXCLUDED_PROPERTIES: String = "editor/excluded_properties"
+const SAVE_PRESETS_EXTERNAL: String = "editor/save_presets_external"
+const SAVE_PRESETS_EXTERNAL_PATH: String = "editor/save_presets_external_path"
 
 const SETTINGS_CONFIGURATION: Dictionary = {
 		PRESET_DATA_PATH: {
@@ -18,6 +20,16 @@ const SETTINGS_CONFIGURATION: Dictionary = {
 			"type": TYPE_ARRAY,
 			"hint": PROPERTY_HINT_ARRAY_TYPE,
 			"value": ["owner", "_import_path", "Node", "scene_file_path"]
+		},
+		SAVE_PRESETS_EXTERNAL: {
+			"type": TYPE_BOOL,
+			"value": false,
+			"hint_string": "if true saves presets to specified place"
+		},
+		SAVE_PRESETS_EXTERNAL_PATH: {
+			"type": TYPE_STRING,
+			"hint": PROPERTY_HINT_DIR,
+			"value": ""
 		}
 	}
 

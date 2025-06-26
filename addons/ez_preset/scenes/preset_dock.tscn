@@ -16,7 +16,7 @@ layout_mode = 2
 offset_top = 35.0
 offset_right = 155.0
 offset_bottom = 101.0
-current_tab = 1
+current_tab = 2
 clip_tabs = false
 drag_to_rearrange_enabled = true
 
@@ -55,6 +55,7 @@ max_columns = 5
 same_column_width = true
 
 [node name="NewPreset" type="VSplitContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -101,7 +102,6 @@ layout_mode = 2
 placeholder_text = "Description"
 
 [node name="Settings" type="MarginContainer" parent="TabContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 0.575)
 layout_mode = 2
 metadata/_tab_index = 2
@@ -111,6 +111,7 @@ layout_mode = 2
 
 [node name="ExcludedParmas" type="RichTextLabel" parent="TabContainer/Settings/VFlowContainer"]
 layout_mode = 2
+tooltip_text = "change it in settings at \"ez_preset/editor/excluded_properties\""
 bbcode_enabled = true
 text = "[color=red]Excluded Parmas[/color]"
 fit_content = true

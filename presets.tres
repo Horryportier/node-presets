@@ -1,53 +1,22 @@
-[gd_resource type="Resource" script_class="EzPresetsData" load_steps=11 format=3 uid="uid://b0wgpc2e3ydt8"]
+[gd_resource type="Resource" script_class="EzPresetsData" load_steps=12 format=3 uid="uid://b0wgpc2e3ydt8"]
 
 [ext_resource type="Script" uid="uid://cem52isc0c1vv" path="res://addons/ez_preset/scripts/ez_preset_group.gd" id="1_qg5l0"]
 [ext_resource type="Script" uid="uid://b8ev7faugivod" path="res://addons/ez_preset/scripts/ez_presets_data.gd" id="2_irq1n"]
 [ext_resource type="Script" uid="uid://ccp1uimo06m2w" path="res://addons/ez_preset/scripts/ez_preset_save.gd" id="2_rxn2t"]
 [ext_resource type="Script" uid="uid://bfnn81qxjoi8d" path="res://test/foo_type.gd" id="3_yttwl"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u8oh8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxn2t"]
+radius = 29.0689
 
-[sub_resource type="Resource" id="Resource_65vpo"]
+[sub_resource type="Resource" id="Resource_yttwl"]
 script = ExtResource("2_rxn2t")
-name = "foo1"
-description = "test "
-node_type = "Foo"
-params = Dictionary[String, Variant]({
-"Auto Translate": null,
-"Editor Description": null,
-"Physics Interpolation": null,
-"Process": null,
-"Thread Group": null,
-"auto_translate_mode": 0,
-"bar": "aoeua(",
-"baz": 423,
-"editor_description": "",
-"foo_type.gd": null,
-"metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
-"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
-,
-"name": &"Foo",
-"physics_interpolation_mode": 0,
-"process_mode": 0,
-"process_physics_priority": 0,
-"process_priority": 0,
-"process_thread_group": 0,
-"process_thread_group_order": 0,
-"process_thread_messages": 0,
-"script": ExtResource("3_yttwl"),
-"unique_name_in_owner": false,
-"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
-})
-children = null
-
-[sub_resource type="Resource" id="Resource_rxn2t"]
-script = ExtResource("2_rxn2t")
-name = "foo_hierachy:Foo:Node2D"
+name = "foo_children:RigidBody2D:CollisionShape2D"
 description = ""
-node_type = "Node2D"
+node_type = "CollisionShape2D"
 params = Dictionary[String, Variant]({
 "Auto Translate": null,
 "CanvasItem": null,
+"CollisionShape2D": null,
 "Editor Description": null,
 "Material": null,
 "Node2D": null,
@@ -60,38 +29,43 @@ params = Dictionary[String, Variant]({
 "Visibility": null,
 "auto_translate_mode": 0,
 "clip_children": 0,
+"debug_color": Color(0.965217, 1.34766e-06, 0.501467, 0.419608),
+"disabled": false,
 "editor_description": "",
-"global_position": Vector2(0, 0.51),
-"global_rotation": 2.70701,
-"global_rotation_degrees": 155.1,
-"global_scale": Vector2(0.335, 0.335),
-"global_skew": 1.22522,
-"global_transform": Transform2D(-0.30386, 0.141047, 0.238118, -0.235637, 0, 0.51),
+"global_position": Vector2(0, 0),
+"global_rotation": 0.0,
+"global_rotation_degrees": 0.0,
+"global_scale": Vector2(1, 1),
+"global_skew": 0.0,
+"global_transform": Transform2D(1, 0, 0, 1, 0, 0),
 "light_mask": 1,
 "material": null,
-"modulate": Color(1, 1, 1, 0.701961),
+"modulate": Color(1, 1, 1, 1),
 "multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
 ,
-"name": &"Node2D",
+"name": &"CollisionShape2D",
+"one_way_collision": false,
+"one_way_collision_margin": 1.0,
 "physics_interpolation_mode": 0,
-"position": Vector2(0, 0.51),
+"position": Vector2(0, 0),
 "process_mode": 0,
 "process_physics_priority": 0,
 "process_priority": 0,
 "process_thread_group": 0,
 "process_thread_group_order": 0,
 "process_thread_messages": 0,
-"rotation": -3.57618,
-"rotation_degrees": -204.9,
-"scale": Vector2(0.335, 0.335),
+"rotation": 0.0,
+"rotation_degrees": 0.0,
+"scale": Vector2(1, 1),
 "script": null,
 "self_modulate": Color(1, 1, 1, 1),
+"shape": SubResource("CircleShape2D_rxn2t"),
 "show_behind_parent": false,
-"skew": 1.22522,
+"skew": 0.0,
 "texture_filter": 0,
 "texture_repeat": 0,
 "top_level": false,
-"transform": Transform2D(-0.30386, 0.141047, 0.238118, -0.235637, 0, 0.51),
+"transform": Transform2D(1, 0, 0, 1, 0, 0),
 "unique_name_in_owner": false,
 "use_parent_material": false,
 "visibility_layer": 1,
@@ -102,43 +76,111 @@ params = Dictionary[String, Variant]({
 })
 children = Array[ExtResource("2_rxn2t")]([])
 
-[sub_resource type="Resource" id="Resource_yttwl"]
-script = ExtResource("2_rxn2t")
-name = "foo_hierachy:Foo"
-description = ""
-node_type = "Foo"
-params = Dictionary[String, Variant]({
-"Auto Translate": null,
-"Editor Description": null,
-"Physics Interpolation": null,
-"Process": null,
-"Thread Group": null,
-"auto_translate_mode": 0,
-"bar": "aoeua(",
-"baz": 423,
-"editor_description": "",
-"foo_type.gd": null,
-"metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
-"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
-,
-"name": &"Foo",
-"physics_interpolation_mode": 0,
-"process_mode": 0,
-"process_physics_priority": 0,
-"process_priority": 0,
-"process_thread_group": 0,
-"process_thread_group_order": 0,
-"process_thread_messages": 0,
-"script": ExtResource("3_yttwl"),
-"unique_name_in_owner": false,
-"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
-})
-children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_rxn2t")])
-
 [sub_resource type="Resource" id="Resource_u8oh8"]
 script = ExtResource("2_rxn2t")
-name = "foo_hierachy"
-description = "test of saving children"
+name = "foo_children:RigidBody2D"
+description = ""
+node_type = "RigidBody2D"
+params = Dictionary[String, Variant]({
+"Angular": null,
+"Auto Translate": null,
+"CanvasItem": null,
+"Collision": null,
+"CollisionObject2D": null,
+"Constant Forces": null,
+"Deactivation": null,
+"Editor Description": null,
+"Input": null,
+"Linear": null,
+"Mass Distribution": null,
+"Material": null,
+"Node2D": null,
+"Ordering": null,
+"Physics Interpolation": null,
+"PhysicsBody2D": null,
+"Process": null,
+"RigidBody2D": null,
+"Solver": null,
+"Texture": null,
+"Thread Group": null,
+"Transform": null,
+"Visibility": null,
+"angular_damp": 0.0,
+"angular_damp_mode": 0,
+"angular_velocity": 0.0,
+"auto_translate_mode": 0,
+"can_sleep": true,
+"center_of_mass": Vector2(0, 0),
+"center_of_mass_mode": 0,
+"clip_children": 0,
+"collision_layer": 41,
+"collision_mask": 5,
+"collision_priority": 1.0,
+"constant_force": Vector2(0, 0),
+"constant_torque": 0.0,
+"contact_monitor": false,
+"continuous_cd": 0,
+"custom_integrator": false,
+"disable_mode": 0,
+"editor_description": "",
+"freeze": false,
+"freeze_mode": 0,
+"global_position": Vector2(0, 0),
+"global_rotation": 0.0,
+"global_rotation_degrees": 0.0,
+"global_scale": Vector2(1, 1),
+"global_skew": 0.0,
+"global_transform": Transform2D(1, 0, 0, 1, 0, 0),
+"gravity_scale": 1.0,
+"inertia": 0.0,
+"input_pickable": false,
+"light_mask": 1,
+"linear_damp": 0.0,
+"linear_damp_mode": 0,
+"linear_velocity": Vector2(0, 0),
+"lock_rotation": false,
+"mass": 1.0,
+"material": null,
+"max_contacts_reported": 0,
+"modulate": Color(1, 1, 1, 1),
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"RigidBody2D",
+"physics_interpolation_mode": 0,
+"physics_material_override": null,
+"position": Vector2(0, 0),
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"rotation": 0.0,
+"rotation_degrees": 0.0,
+"scale": Vector2(1, 1),
+"script": null,
+"self_modulate": Color(1, 1, 1, 1),
+"show_behind_parent": false,
+"skew": 0.0,
+"sleeping": false,
+"texture_filter": 0,
+"texture_repeat": 0,
+"top_level": false,
+"transform": Transform2D(1, 0, 0, 1, 0, 0),
+"unique_name_in_owner": false,
+"use_parent_material": false,
+"visibility_layer": 1,
+"visible": true,
+"y_sort_enabled": false,
+"z_as_relative": true,
+"z_index": 0
+})
+children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_yttwl")])
+
+[sub_resource type="Resource" id="Resource_65vpo"]
+script = ExtResource("2_rxn2t")
+name = "foo_children"
+description = "foo test with children"
 node_type = "Foo"
 params = Dictionary[String, Variant]({
 "Auto Translate": null,
@@ -147,8 +189,8 @@ params = Dictionary[String, Variant]({
 "Process": null,
 "Thread Group": null,
 "auto_translate_mode": 0,
-"bar": "aoeua(",
-"baz": 423,
+"bar": "",
+"baz": 0,
 "editor_description": "",
 "foo_type.gd": null,
 "metadata/_custom_type_script": "uid://bfnn81qxjoi8d",
@@ -164,19 +206,194 @@ params = Dictionary[String, Variant]({
 "process_thread_messages": 0,
 "script": ExtResource("3_yttwl"),
 "unique_name_in_owner": false,
-"zaz": SubResource("ProceduralSkyMaterial_u8oh8")
+"zaz": null
 })
-children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_yttwl")])
+children = Array[ExtResource("2_rxn2t")]([SubResource("Resource_u8oh8")])
 
 [sub_resource type="Resource" id="Resource_tu0o8"]
 script = ExtResource("1_qg5l0")
 type = "Foo"
-members = Array[ExtResource("2_rxn2t")]([SubResource("Resource_65vpo"), SubResource("Resource_u8oh8")])
+members = Array[ExtResource("2_rxn2t")]([SubResource("Resource_65vpo")])
+
+[sub_resource type="Resource" id="Resource_rxn2t"]
+script = ExtResource("2_rxn2t")
+name = "external_save_test"
+description = "testing external save functionality"
+node_type = "RichTextLabel"
+params = Dictionary[String, Variant]({
+"Anchor Offsets": null,
+"Anchor Points": null,
+"Auto Translate": null,
+"BiDi": null,
+"CanvasItem": null,
+"Container Sizing": null,
+"Control": null,
+"Displayed Text": null,
+"Editor Description": null,
+"Focus": null,
+"Grow Direction": null,
+"Input": null,
+"Layout": null,
+"Localization": null,
+"Markup": null,
+"Material": null,
+"Mouse": null,
+"Ordering": null,
+"Physics Interpolation": null,
+"Process": null,
+"RichTextLabel": null,
+"Text Selection": null,
+"Texture": null,
+"Theme": null,
+"Theme Overrides": null,
+"Thread Group": null,
+"Threading": null,
+"Tooltip": null,
+"Transform": null,
+"Visibility": null,
+"anchor_bottom": 0.0,
+"anchor_left": 0.0,
+"anchor_right": 0.0,
+"anchor_top": 0.0,
+"anchors_preset": 0,
+"auto_translate": true,
+"auto_translate_mode": 0,
+"autowrap_mode": 0,
+"bbcode_enabled": true,
+"clip_children": 0,
+"clip_contents": true,
+"context_menu_enabled": false,
+"custom_effects": [],
+"custom_minimum_size": Vector2(0, 0),
+"deselect_on_focus_loss_enabled": true,
+"drag_and_drop_selection_enabled": true,
+"editor_description": "",
+"fit_content": true,
+"focus_mode": 0,
+"focus_neighbor_bottom": NodePath(""),
+"focus_neighbor_left": NodePath(""),
+"focus_neighbor_right": NodePath(""),
+"focus_neighbor_top": NodePath(""),
+"focus_next": NodePath(""),
+"focus_previous": NodePath(""),
+"global_position": Vector2(0, 66),
+"grow_horizontal": 1,
+"grow_vertical": 1,
+"hint_underlined": true,
+"horizontal_alignment": 0,
+"justification_flags": 163,
+"language": "",
+"layout_direction": 0,
+"layout_mode": 2,
+"light_mask": 1,
+"localize_numeral_system": true,
+"material": null,
+"meta_underlined": true,
+"modulate": Color(1, 1, 1, 1),
+"mouse_default_cursor_shape": 0,
+"mouse_filter": 0,
+"mouse_force_pass_scroll_events": true,
+"multiplayer": Object(SceneMultiplayer,"root_path":NodePath("/root"),"auth_callback":Callable(),"auth_timeout":3.0,"allow_object_decoding":false,"refuse_new_connections":false,"server_relay":true,"max_sync_packet_size":1350,"max_delta_packet_size":65535,"script":null)
+,
+"name": &"ExcludedParmas",
+"offset_bottom": 23.0,
+"offset_left": 0.0,
+"offset_right": 273.0,
+"offset_top": 0.0,
+"physics_interpolation_mode": 2,
+"pivot_offset": Vector2(0, 0),
+"position": Vector2(0, 0),
+"process_mode": 0,
+"process_physics_priority": 0,
+"process_priority": 0,
+"process_thread_group": 0,
+"process_thread_group_order": 0,
+"process_thread_messages": 0,
+"progress_bar_delay": 1000,
+"rotation": 0.0,
+"rotation_degrees": 0.0,
+"scale": Vector2(1, 1),
+"script": null,
+"scroll_active": true,
+"scroll_following": false,
+"selection_enabled": false,
+"self_modulate": Color(1, 1, 1, 1),
+"shortcut_context": null,
+"shortcut_keys_enabled": true,
+"show_behind_parent": false,
+"size": Vector2(273, 23),
+"size_flags_horizontal": 1,
+"size_flags_stretch_ratio": 1.0,
+"size_flags_vertical": 1,
+"structured_text_bidi_override": 0,
+"structured_text_bidi_override_options": [],
+"tab_size": 4,
+"tab_stops": PackedFloat32Array(),
+"text": "[color=red]Excluded Parmas[/color]",
+"text_direction": 0,
+"texture_filter": 0,
+"texture_repeat": 0,
+"theme": null,
+"theme_override_colors/default_color": null,
+"theme_override_colors/font_outline_color": null,
+"theme_override_colors/font_selected_color": null,
+"theme_override_colors/font_shadow_color": null,
+"theme_override_colors/selection_color": null,
+"theme_override_colors/table_border": null,
+"theme_override_colors/table_even_row_bg": null,
+"theme_override_colors/table_odd_row_bg": null,
+"theme_override_constants/line_separation": null,
+"theme_override_constants/outline_size": null,
+"theme_override_constants/shadow_offset_x": null,
+"theme_override_constants/shadow_offset_y": null,
+"theme_override_constants/shadow_outline_size": null,
+"theme_override_constants/table_h_separation": null,
+"theme_override_constants/table_v_separation": null,
+"theme_override_constants/text_highlight_h_padding": null,
+"theme_override_constants/text_highlight_v_padding": null,
+"theme_override_font_sizes/bold_font_size": null,
+"theme_override_font_sizes/bold_italics_font_size": null,
+"theme_override_font_sizes/italics_font_size": null,
+"theme_override_font_sizes/mono_font_size": null,
+"theme_override_font_sizes/normal_font_size": null,
+"theme_override_fonts/bold_font": null,
+"theme_override_fonts/bold_italics_font": null,
+"theme_override_fonts/italics_font": null,
+"theme_override_fonts/mono_font": null,
+"theme_override_fonts/normal_font": null,
+"theme_override_styles/background": null,
+"theme_override_styles/fill": null,
+"theme_override_styles/focus": null,
+"theme_override_styles/normal": null,
+"theme_type_variation": &"",
+"threaded": false,
+"tooltip_auto_translate_mode": 0,
+"tooltip_text": "change it in settings at \"ez_preset/editor/excluded_properties\"",
+"top_level": false,
+"unique_name_in_owner": false,
+"use_parent_material": false,
+"vertical_alignment": 0,
+"visibility_layer": 1,
+"visible": true,
+"visible_characters": -1,
+"visible_characters_behavior": 0,
+"visible_ratio": 1.0,
+"y_sort_enabled": false,
+"z_as_relative": true,
+"z_index": 0
+})
+children = Array[ExtResource("2_rxn2t")]([])
+
+[sub_resource type="Resource" id="Resource_ljckg"]
+script = ExtResource("1_qg5l0")
+type = "RichTextLabel"
+members = Array[ExtResource("2_rxn2t")]([SubResource("Resource_rxn2t")])
 
 [resource]
 script = ExtResource("2_irq1n")
 presets = Dictionary[String, ExtResource("1_qg5l0")]({
-"Foo": SubResource("Resource_tu0o8")
+"Foo": SubResource("Resource_tu0o8"),
+"RichTextLabel": SubResource("Resource_ljckg")
 })
 excluded_params = Dictionary[String, bool]({
 "Node": true,

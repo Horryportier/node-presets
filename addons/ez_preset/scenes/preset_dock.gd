@@ -35,6 +35,8 @@ var editor_interface: EditorInterface
 
 var editor_selection: EditorSelection
 
+var _save_external: bool
+
 var selected: Node
 
 var _status_msg: StatusMsg = StatusMsg.None:
@@ -44,6 +46,7 @@ var _status_msg: StatusMsg = StatusMsg.None:
 			_update_status_msg()
 
 func _ready() -> void:
+	_save_external = EzSettings.get_setting(EzSettings.SAVE_PRESETS_EXTERNAL)
 	editor_selection = editor_interface.get_selection()
 	editor_selection.selection_changed.connect(_on_selection_changed)
 	save_button.pressed.connect(_on_save_button_pressed)
@@ -75,8 +78,21 @@ func _add_save_to_data(save: EzPresetSave) -> void:
 		new_group.type = save.node_type
 		presets_data.presets[save.node_type] = new_group
 		presets_data.presets[save.node_type].members.append(save)
+	if _save_external:
+		_status_msg = SAVE_SUCCESUFULL if  _save_data_as_exteral(save) == OK else SAVE_FAILED
 	_save_presets_data()
 
+func _save_data_as_exteral(save: EzPresetSave) -> int:
+	var save_path: String = EzSettings.get_setting(EzSettings.SAVE_PRESETS_EXTERNAL_PATH)
+	if save_path == "" or DirAccess.open(save_path) == null:
+		push_warning("failed to save as external invalid path")
+		return DirAccess.get_open_error()
+	var full_path: String = "%s/%s.tres" % [save_path, save.name]
+	if ResourceLoader.exists(full_path, "EzPresetSave"):
+		var resource: EzPresetSave = ResourceLoader.load(full_path)
+		resource = save
+		return ResourceSaver.save(resource)
+	return ResourceSaver.save(save, full_path)
 
 func _save_presets_data() -> void:
 	if ResourceSaver.save(presets_data) != OK:
@@ -137,6 +153,13 @@ func _apply_properies(node: Node, save: EzPresetSave) -> void:
 		if presets_data.excluded_params.get(property, false):
 			continue
 		node.set(property, save.params[property])
+	for child_save in save.children:
+		var child_node: = ClassDB.instantiate(child_save.node_type)
+		node.add_child(child_node)
+		child_node.owner = editor_interface.get_edited_scene_root()
+		_apply_properies(child_node, child_save)
+		
+		
 
 
 func _on_selection_changed() -> void:
@@ -156,6 +179,8 @@ func _on_selection_changed() -> void:
 func _update_selection_list() -> void: 
 	presets_list.clear()
 	var type_name: = _get_node_type_name(selected)
+	if presets_data == null:
+		return
 	var group: EzPresetGroup = presets_data.presets.get(type_name)
 	if group == null:
 		node_type_label.text = "[color=gray]No Presets[/color]"
