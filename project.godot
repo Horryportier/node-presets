@@ -14,18 +14,22 @@ config/name="Node Presets"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EzGlobal="*res://addons/ez_preset/autoload/ez_autoload.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ez_preset/plugin.cfg")
 
 [ez_preset]
 
-editor/save_presets_external=true
 editor/save_presets_external_path="res://presets"
 
 [file_customization]
 
 folder_colors={
+"res://addons/ez_preset/autoload/": "blue",
 "res://addons/ez_preset/resources/": "red",
 "res://addons/ez_preset/scenes/": "green",
 "res://addons/ez_preset/scripts/": "yellow",

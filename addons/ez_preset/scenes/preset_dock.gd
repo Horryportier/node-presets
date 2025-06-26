@@ -46,6 +46,7 @@ var _status_msg: StatusMsg = StatusMsg.None:
 			_update_status_msg()
 
 func _ready() -> void:
+	await  get_tree().create_timer(0.1).timeout
 	_save_external = EzSettings.get_setting(EzSettings.SAVE_PRESETS_EXTERNAL)
 	editor_selection = editor_interface.get_selection()
 	editor_selection.selection_changed.connect(_on_selection_changed)
@@ -110,6 +111,9 @@ func _update_excluded_params_list() -> void:
 func crate_preset_resource(node: Node, _name: String,  description: String) -> EzPresetSave:
 	var save: = EzPresetSave.new()
 	save.node_type = _get_node_type_name(node)
+	if !_is_class_registered(save.node_type):
+		var script: Script = node.get_script()
+		EzGlobal.request_register_new_type.emit(save.node_type, node.get_class(), node.get_script())
 	save.name = _name
 	save.description = description
 	for p: Dictionary in node.get_property_list():
@@ -121,6 +125,9 @@ func crate_preset_resource(node: Node, _name: String,  description: String) -> E
 		for child in node.get_children():
 			save.children.append(crate_preset_resource(child, _name + ":" + child.name, ""))
 	return save
+
+func _is_class_registered(name: String) -> bool:
+	return ClassDB.class_exists(name)
 
 func _get_node_type_name(node: Node) -> String:
 	if !is_instance_valid(node):
@@ -153,8 +160,18 @@ func _apply_properies(node: Node, save: EzPresetSave) -> void:
 		if presets_data.excluded_params.get(property, false):
 			continue
 		node.set(property, save.params[property])
-	for child_save in save.children:
-		var child_node: = ClassDB.instantiate(child_save.node_type)
+	for child_save: EzPresetSave in save.children:
+		var child_node: Node
+		if _is_class_registered(child_save.node_type):
+			child_node = ClassDB.instantiate(child_save.node_type)
+		else:
+			var script: Script = child_save.params.get("script", null)
+			if script != null:
+				var type: = load(script.get_path())
+				child_node = type.new()
+		if !is_instance_valid(child_node):
+			push_warning("invalid child node")
+			continue
 		node.add_child(child_node)
 		child_node.owner = editor_interface.get_edited_scene_root()
 		_apply_properies(child_node, child_save)
@@ -176,6 +193,7 @@ func _on_selection_changed() -> void:
 	_status_msg = StatusMsg.Selected
 	_update_selection_list()
 
+
 func _update_selection_list() -> void: 
 	presets_list.clear()
 	var type_name: = _get_node_type_name(selected)
@@ -192,6 +210,7 @@ func _update_selection_list() -> void:
 	node_type_label.text = "[color=green]%s[/color]" % [type_name]
 	for name in names:
 		presets_list.add_item(name)
+
 
 func _update_status_msg() -> void:
 	match _status_msg:
